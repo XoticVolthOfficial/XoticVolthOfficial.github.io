@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="en">  
+<head>  
+  <meta charset="utf-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>ChadHaxx Hub</title>  
+  <meta name="description" content="ChadHaxx loader hub — free loader scripts, instant updates, Discord community." />  
+  <style>  
+    :root{  
+      --bg:#050814;--card:#0b1220;--muted:#94b0d8;--accent:#6e40ff;--accent-2:#0ea5e9;--glass:rgba(255,255,255,0.04);  
+      --radius:14px;--maxwidth:1100px;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;  
+    }  
+    *{box-sizing:border-box}  
+    body{margin:0;background:linear-gradient(180deg,#020318 0%, #050814 100%);color:#e6eef8;min-height:100vh;overflow-x:hidden}  /* Header */  
+header{position:fixed;inset:0 0 auto 0;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;z-index:40;backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(2,4,10,0.45), rgba(2,4,10,0.15));border-bottom:1px solid rgba(255,255,255,0.03)}  
+.logo{display:flex;gap:12px;align-items:center}  
+.logo .mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;font-weight:800}  
+.logo h1{font-size:18px;margin:0}  
+nav{display:flex;gap:18px;align-items:center}  
+nav a{color:var(--muted);text-decoration:none;font-weight:600}  
+nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:10px;color:white}  
+
+/* Hero */  
+.container{max-width:var(--maxwidth);margin:0 auto;padding:120px 20px 60px}  
+.hero{display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center}  
+@media (max-width:900px){.hero{grid-template-columns:1fr;}.container{padding:100px 16px}}  
+
+.hero-left h2{font-size:48px;margin:0 0 10px;letter-spacing:-1px}  
+.hero-left p{color:var(--muted);font-size:18px;margin:0 0 18px}  
+.hero-left .actions{display:flex;gap:12px;flex-wrap:wrap}  
+
+/* Loader card */  
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:var(--radius);border:1px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.6)}  
+.script{background:#071028;padding:14px;border-radius:10px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono';font-size:14px;color:#bfe4ff;white-space:pre-wrap}  
+.controls{display:flex;gap:10px;margin-top:12px}  
+.btn{padding:10px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:700}  
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}  
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}  
+
+/* Features */  
+.section{margin-top:40px}  
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}  
+.feature{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:18px;border-radius:12px}  
+.feature h3{margin:0 0 8px;color:var(--accent)}  
+.feature p{margin:0;color:var(--muted)}  
+
+/* Pricing */  
+.pricing{display:flex;gap:18px;align-items:stretch;flex-wrap:wrap;margin-top:30px}  
+.tier{flex:1;min-width:220px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#071028,#061021);border:1px solid rgba(255,255,255,0.03)}  
+.tier h4{margin-top:0}  
+.badge{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);font-weight:700}  
+
+/* FAQ */  
+.faq .q{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:12px;border-radius:10px;margin-bottom:8px}  
+
+footer{padding:30px 20px;text-align:center;color:var(--muted);margin-top:60px}  
+
+/* Floating discord */  
+.discord-float{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:12px 14px;border-radius:12px;box-shadow:0 8px 30px rgba(110,64,255,0.12);z-index:60}  
+
+/* Particles canvas fullbleed */  
+#particle-canvas{position:fixed;inset:0;z-index:-1}  
+
+/* small helpers */  
+.muted{color:var(--muted)}  
+.copy-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:36px;background:#0b1220;padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);display:none}
+
+  </style>  
+</head>  
+<body>  
+  <canvas id="particle-canvas"></canvas>  
+  <header>  
+    <div class="logo">  
+      <div class="mark">C</div>  
+      <div>  
+        <h1 style="margin:0">ChadHaxx</h1>  
+        <div style="font-size:12px;margin-top:2px;color:var(--muted)">Free Loader Hub</div>  
+      </div>  
+    </div>  
+    <nav>  
+      <a href="#features">Features</a>  
+      <a href="#pricing">Pricing</a>  
+      <a class="cta" href="https://discord.gg/ry8Y6ZcXFN" target="_blank">Discord</a>  
+    </nav>  
+  </header>    <main class="container">  
+    <section class="hero">  
+      <div class="hero-left">  
+        <h2>ChadHaxx Hub Official Site</h2>  
+        <p class="muted">Fast, safe, and zero barriers. Grab the loader, join the community, and start customizing your experience.</p>  <div class="actions">  
+      <a class="btn primary" href="https://discord.gg/ry8Y6ZcXFN" target="_blank">Join Discord</a>  
+      <button class="btn ghost" id="scrollLoader">Get Loader</button>  
+    </div>  
+
+    <div class="section" id="features">  
+      <div class="grid">  
+        <div class="feature"><h3>🎮 Supported Game</h3><p>APOCALYPSE RISING 2 - AFTERMATH - RIVALS - PROJECT DELTA - COUNTER BLOX</p></div>  
+        <div class="feature"><h3>✨ How To Get Key</h3><p>Join Our Discord And Copy The Key And Paste And Done You Can Now Use The Script</p></div>  
+        <div class="feature"><h3>🧰 Multi-Game</h3><p>Target many Roblox experiences with one loader.</p></div>  
+        <div class="feature"><h3>🔒 Minimal Risks</h3><p>We provide the loader only — inspect source before running.</p></div>  
+      </div>  
+    </div>  
+  </div>  
+
+  <aside>  
+    <div class="card">  
+      <h3 style="margin:0 0 8px">Loader Script - Get The Key In Our Discord</h3>  
+      <div class="muted" style="font-size:13px;margin-bottom:12px">This Script Enhance And Boost Your Compatibility While Playing.</div>  
+      <div class="script" id="scriptBlock">loadstring(game:HttpGet("https://raw.githubusercontent.com/chadreypagoboa-collab/Loader/refs/heads/main/Loader"))()</div>  
+
+      <div class="controls">  
+        <button class="btn primary" id="copyBtn">Copy script</button>  
+        <button class="btn ghost" id="downloadBtn">Download .lua</button>  
+      </div>  
+      <div style="margin-top:12px;font-size:13px;color:var(--muted)"><strong>Note:</strong> Use only on accounts and devices you own. Inspect scripts before running.</div>  
+    </div>  
+
+    <div style="height:18px"></div>  
+
+    <div class="card">  
+      <h4 style="margin:0 0 8px">Quick Tips</h4>  
+      <ul class="muted" style="padding-left:18px;margin:0">  
+        <li>Use a trusted executor.</li>  
+        <li>Keep backups of settings.</li>  
+        <li>Join Discord for support and updates.</li>  
+      </ul>  
+    </div>  
+  </aside>  
+</section>  
+
+<section class="section">  
+  <div class="section-title">Pricing</div>  
+  <div class="pricing">  
+    <div class="tier card">  
+      <span class="badge">Loader Script Description</span>  
+      <h4>Original Script</h4>  
+      <p class="muted">Everything Here In The Loader Was Custom Made It was Made By Chadrey.</p>  
+    </div>  
+    <div class="tier card">  
+      <span class="badge">Community</span>  
+      <h4>Discord Support</h4>  
+      <p class="muted">Join our Discord for guides, updates, and help.</p>  
+    </div>  
+    <div class="tier card">  
+      <span class="badge">Experimental</span>  
+      <h4>Early features</h4>  
+      <p class="muted">Beta features may appear here; optional and free.</p>  
+    </div>  
+  </div>  
+</section>  
+
+<section class="section">  
+  <div class="section-title">FAQ</div>  
+  <div class="faq">  
+    <div class="q card"><strong>Is this safe?</strong><p class="muted">We only publish the loader string. Always inspect and run on accounts you control.</p></div>  
+    <div class="q card"><strong>Does it require a key?</strong><p class="muted">Yes - You need to join our discord server to get the key.</p></div>  
+    <div class="q card"><strong>How do updates work?</strong><p class="muted">We Just Announce It In Discord.</p></div>  
+  </div>  
+</section>
+
+  </main>    <footer>  
+    ChadHaxx Loader Hub • Built with care • Join the community on Discord — <a href="https://discord.gg/ry8Y6ZcXFN" target="_blank" style="color:var(--accent-2)">discord.gg/ry8Y6ZcXFN</a>  
+  </footer>  <a class="discord-float" href="https://discord.gg/ry8Y6ZcXFN" target="_blank">Join Discord</a>
+
+  <div class="copy-toast" id="toast">Copied to clipboard</div>    <script>  
+    // Smooth scroll to loader  
+    document.getElementById('scrollLoader').addEventListener('click', () => {  
+      document.getElementById('scriptBlock').scrollIntoView({behavior:'smooth', block:'center'});  
+    });  
+  
+    // Copy / download handlers  
+    const scriptText = document.getElementById('scriptBlock').innerText;  
+    document.getElementById('copyBtn').addEventListener('click', async () => {  
+      try{  
+        await navigator.clipboard.writeText(scriptText);  
+        const t = document.getElementById('toast'); t.style.display='block'; setTimeout(()=>t.style.display='none',1600);  
+      }catch(e){alert('Unable to copy — browser blocked clipboard.');}  
+    });  
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{  
+      const blob = new Blob([scriptText], {type:'text/plain'});  
+      const url = URL.createObjectURL(blob);  
+      const a = document.createElement('a'); a.href=url; a.download='chadhaxx_loader.lua'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);  
+    });  
+  
+    // Particle background (lightweight)  
+    const canvas = document.getElementById('particle-canvas');  
+    const ctx = canvas.getContext('2d');  
+    let W, H, particles=[];  
+    function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight}  
+    window.addEventListener('resize', resize); resize();  
+  
+    function rand(min,max){return Math.random()*(max-min)+min}  
+    function init(){particles=[];for(let i=0;i<120;i++){particles.push({x:Math.random()*W,y:Math.random()*H,r:rand(0.4,1.8),vx:rand(-0.15,0.15),vy:rand(-0.15,0.15),alpha:rand(0.03,0.12)})}}  
+    function step(){ctx.clearRect(0,0,W,H);for(const p of particles){p.x+=p.vx;p.y+=p.vy; if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0; ctx.beginPath(); ctx.fillStyle='rgba(255,255,255,'+p.alpha+')'; ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();} requestAnimationFrame(step)}  
+    init(); step();  
+  
+    // small parallax on mouse for hero  
+    (function(){const hero=document.querySelector('.hero'); if(!hero) return; window.addEventListener('mousemove', e=>{const cx=innerWidth/2, cy=innerHeight/2; const dx=(e.clientX-cx)/cx, dy=(e.clientY-cy)/cy; hero.style.transform='translate3d('+(dx*6)+'px,'+(dy*6)+'px,0)'; hero.style.transition='transform 0.06s';});})();  
+  
+    // accessibility: keyboard copy  
+    document.addEventListener('keydown', e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='c'){navigator.clipboard&&navigator.clipboard.writeText(scriptText).then(()=>{const t=document.getElementById('toast');t.style.display='block';setTimeout(()=>t.style.display='none',1600)})}});  
+  </script>  </body>  
+</html>
